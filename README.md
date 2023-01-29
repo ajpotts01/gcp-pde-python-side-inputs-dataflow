@@ -5,9 +5,10 @@ These are actually possible to do directly through Qwiklabs/Cloud Skills Boost, 
 
 Original lab is [here on Cloud Skills Boost](https://www.cloudskillsboost.google/course_sessions/2329626/labs/358117). The pipeline uses Apache Beam 2.44.0, despite the lab being written for 2.5.0 (which is deprecrated).
 
-There are two files that can be run independently to execute Apache Beam pipelines:
-- `src\sideinput_pipeline.py`, for local running
-- `src\sideinput_pipeline_cloud.py`, for running on Google Cloud Dataflow
+There is only one file used here for running a pipeline:
+- `src\sideinput_pipeline.py`, for running on Google Cloud Dataflow
+
+The pipeline uses a public BigQuery dataset, so have opted to just run it on GCP entirely.
 
 Steps before running either pipeline:
 1. Clone the repo
@@ -18,10 +19,6 @@ Steps before running either pipeline:
     - On bash, `export PYTHONPATH=$(cwd)`
     - On Powershell, `$env:PYTHONPATH = Get-Location`
 
-If running locally:
-1. Run `python sideinput_pipeline.py`
-2. Check the `results` folder
-
 If running on Google Cloud Dataflow:
 1. Set up a Google Cloud Platform account
 2. Create a Google Cloud Storage bucket for this project
@@ -30,5 +27,5 @@ If running on Google Cloud Dataflow:
 5. Create a `pipeline.env` file in `src`, with the following keys:
     - `GCP_PROJECT`: Your GCP project ID from step 1
     - `GCS_BUCKET`: Your GCS bucket from step 2
-6. Run `python sideinput_pipeline_cloud.py`
+6. Run `python sideinput_pipeline.py`
 7. Check the `results` folder in your GCS bucket.
